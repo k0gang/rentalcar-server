@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="icon" href="https://em-content.zobj.net/source/twitter/376/skateboard_1f6f9.png">
+<title>Rental-car</title>
 </head>
 <body>
-
+<h1></h1>
 </body>
 </html>
