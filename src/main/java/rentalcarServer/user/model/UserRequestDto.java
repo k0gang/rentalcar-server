@@ -9,6 +9,29 @@ public class UserRequestDto {
 	private String userPhone;
 	private boolean admin;
 	
+	public UserRequestDto(String userId, String userPassword, String userName, String userBirth, String userTelecom,
+			String userPhone, boolean admin) {
+		super();
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userName = userName;
+		this.userBirth = userBirth;
+		this.userTelecom = userTelecom;
+		this.userPhone = userPhone;
+		this.admin = admin;
+	}
+	
+	public UserRequestDto(String userId, String userPassword, String userName, String userBirth, String userTelecom,
+			String userPhone) {
+		super();
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userName = userName;
+		this.userBirth = userBirth;
+		this.userTelecom = userTelecom;
+		this.userPhone = userPhone;
+	}
+	
 	public UserRequestDto() {
 
 	}

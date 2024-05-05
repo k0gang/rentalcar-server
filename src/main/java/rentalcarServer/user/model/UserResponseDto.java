@@ -10,6 +10,11 @@ public class UserResponseDto {
 	private String userPhone;
 	private boolean admin;
 
+	@Override
+	public String toString() {
+		return this.userId + this.userName;
+	}
+	
 	public UserResponseDto(String userId, String userPassword, String userName, String userBirth, String userTelecom,
 			String userPhone, boolean admin) {
 		super();
@@ -20,6 +25,17 @@ public class UserResponseDto {
 		this.userTelecom = userTelecom;
 		this.userPhone = userPhone;
 		this.admin = admin;
+	}
+	
+	public UserResponseDto(String userId, String userPassword, String userName, String userBirth, String userTelecom,
+			String userPhone) {
+		super();
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userName = userName;
+		this.userBirth = userBirth;
+		this.userTelecom = userTelecom;
+		this.userPhone = userPhone;
 	}
 
 	public UserResponseDto(User user) {
@@ -87,5 +103,4 @@ public class UserResponseDto {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-
 }
