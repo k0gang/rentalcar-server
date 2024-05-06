@@ -84,14 +84,41 @@
 		<servlet-name>UpdateFormAction</servlet-name>
 		<url-pattern>/UpdateForm</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>DeleteFormAction</servlet-name>
 		<servlet-class>rentalcarServer.user.controller.DeleteFormAction</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DeleteFormAction</servlet-name>
 		<url-pattern>/DeleteForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteBoardFormAction</servlet-name>
+		<servlet-class>rentalcarServer.board.controller.DeleteFormAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteFormAction</servlet-name>
+		<url-pattern>/DeleteBoardForm</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>WriteBoardFormAction</servlet-name>
+		<servlet-class>rentalcarServer.board.controller.WriteFormAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WriteFormAction</servlet-name>
+		<url-pattern>/WriteBoardForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UpdateBoardFormAction</servlet-name>
+		<servlet-class>rentalcarServer.board.controller.UpdateBoardFormAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateBoardFormAction</servlet-name>
+		<url-pattern>/UpdateBoardForm</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -102,7 +129,7 @@
 		<servlet-name>updateUserForm</servlet-name>
 		<url-pattern>/updateUser</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>deleteUserForm</servlet-name>
 		<jsp-file>/views/user/deleteUserForm.jsp</jsp-file>
