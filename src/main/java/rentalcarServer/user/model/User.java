@@ -1,6 +1,6 @@
 package rentalcarServer.user.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class User {
 	private String userId;
@@ -12,6 +12,20 @@ public class User {
 	private boolean admin;
 	private Timestamp regDate;
 	private Timestamp modDate;
+
+	public User(String userId, String userPassword, String userName, String userBirth, String userTelecom,
+			String userPhone, boolean admin, Timestamp regDate, Timestamp modDate) {
+		super();
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userName = userName;
+		this.userBirth = userBirth;
+		this.userTelecom = userTelecom;
+		this.userPhone = userPhone;
+		this.admin = admin;
+		this.regDate = regDate;
+		this.modDate = modDate;
+	}
 
 	public String getUserId() {
 		return userId;
