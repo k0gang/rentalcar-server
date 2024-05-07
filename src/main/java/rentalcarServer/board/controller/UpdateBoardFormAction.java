@@ -6,6 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import rentalcarServer.board.model.BoardDao;
+import rentalcarServer.board.model.BoardRequestDto;
+import rentalcarServer.board.model.BoardResponseDto;
 
 /**
  * Servlet implementation class UpdateBoardFormAction
@@ -13,31 +18,72 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/UpdateBoardFormAction")
 public class UpdateBoardFormAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UpdateBoardFormAction() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public UpdateBoardFormAction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		
-		
+
+		String boardCode = request.getParameter("board_code");
+		String userId = request.getParameter("user_id");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String admin = request.getParameter("admin");
+
+		boolean isValid = true;
+
+		if (boardCode == null || boardCode.equals(""))
+			isValid = false;
+		else if (userId == null || userId.equals(""))
+			isValid = false;
+		else if (title == null || title.equals(""))
+			isValid = false;
+		else if (content == null || content.equals(""))
+			isValid = false;
+		else if (admin == null || admin.equals(""))
+			isValid = false;
+
+		if (isValid) {
+			BoardDao boardDao = BoardDao.getInstance();
+
+			BoardRequestDto boardDto = new BoardRequestDto();
+			BoardResponseDto board = boardDao.updateBoard(boardDto);
+
+			HttpSession session = request.getSession();
+
+			if (board == null) {
+				response.sendRedirect("/board/" + board.getBoardCode());
+			} else {
+				System.out.println("게시물 수정 완료.");
+
+				response.sendRedirect("");
+			}
+
+		} else {
+			response.sendRedirect("/board");
+		}
+
 	}
 
 }

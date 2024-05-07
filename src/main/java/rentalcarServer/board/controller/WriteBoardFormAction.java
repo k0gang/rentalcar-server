@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import rentalcarServer.board.model.BoardDao;
+import rentalcarServer.board.model.BoardResponseDto;
 
 /**
  * Servlet implementation class WriteBoardFormAction
@@ -26,8 +30,14 @@ public class WriteBoardFormAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int boardCode = Integer.parseInt(request.getParameter("boardCode"));
+		BoardDao boardDao = BoardDao.getInstance();
+		BoardResponseDto board = boardDao.findBoard(boardCode);
+		System.out.println(board.getBoardCode());
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("board", board);
+		response.sendRedirect("/view");
 	}
 
 	/**
