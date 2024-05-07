@@ -9,6 +9,6 @@
 <title>Rental-car</title>
 </head>
 <body>
-<h1></h1>
+<h1>헤더</h1>
 </body>
 </html>
