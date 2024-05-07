@@ -59,6 +59,33 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>board</servlet-name>
+		<jsp-file>/views/board/board.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>board</servlet-name>
+		<url-pattern>/board</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>view</servlet-name>
+		<jsp-file>/views/board/view.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>view</servlet-name>
+		<url-pattern>/view</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>writeForm</servlet-name>
+		<jsp-file>/views/board/writeForm.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>writeForm</servlet-name>
+		<url-pattern>/write</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>JoinFormAction</servlet-name>
 		<servlet-class>rentalcarServer.user.controller.JoinFormAction</servlet-class>
 	</servlet>
@@ -102,13 +129,13 @@
 		<servlet-name>DeleteFormAction</servlet-name>
 		<url-pattern>/DeleteBoardForm</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>WriteBoardFormAction</servlet-name>
 		<servlet-class>rentalcarServer.board.controller.WriteFormAction</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>WriteFormAction</servlet-name>
+		<servlet-name>WriteBoardFormAction</servlet-name>
 		<url-pattern>/WriteBoardForm</url-pattern>
 	</servlet-mapping>
 
@@ -119,6 +146,15 @@
 	<servlet-mapping>
 		<servlet-name>UpdateBoardFormAction</servlet-name>
 		<url-pattern>/UpdateBoardForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ViewBoardFormAction</servlet-name>
+		<servlet-class>rentalcarServer.board.controller.ViewBoardFormAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewBoardFormAction</servlet-name>
+		<url-pattern>/ViewBoardForm</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
