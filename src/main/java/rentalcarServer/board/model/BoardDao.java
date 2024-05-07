@@ -16,10 +16,6 @@ public class BoardDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
-	private BoardDao() {
-		// TODO Auto-generated constructor stub
-	}
-
 	private static BoardDao boardDao = new BoardDao();
 
 	public static BoardDao getInstance() {
@@ -29,7 +25,7 @@ public class BoardDao {
 	public List<BoardResponseDto> findBoardAll() {
 		List<BoardResponseDto> list = new ArrayList<BoardResponseDto>();
 		conn = dbConnection.getConnection();
-		String sql = "SELECT board_code,user_id,title,content,admin,reg_date FROM board order by reg_date desc;";
+		String sql = "SELECT board_code,user_id,title,content,admin,reg_date FROM board order by admin desc , reg_date desc;";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -129,6 +125,32 @@ public class BoardDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	public BoardResponseDto updateBoard(BoardRequestDto boardDto) {
+		BoardResponseDto board = null;
+
+		if (findBoard(boardDto.getBoardCode()) == null) {
+			return board;
+		}
+
+		try {
+			conn = dbConnection.getConnection();
+
+			String sql = "UPDATE board SET title=? content=? WHERE board_code=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardDto.getTitle());
+			pstmt.setString(2, boardDto.getContent());
+			pstmt.setInt(3, boardDto.getBoardCode());
+
+			pstmt.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.close(conn, pstmt);
+		}
+		return board;
 	}
 
 }
