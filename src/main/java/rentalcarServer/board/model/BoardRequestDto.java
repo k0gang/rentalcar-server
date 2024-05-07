@@ -15,6 +15,14 @@ public class BoardRequestDto {
 		this.title = title;
 		this.content = content;
 	}
+	
+	public BoardRequestDto(int boardCode, String userId, String title, String content) {
+		super();
+		this.boardCode = boardCode;
+		this.userId = userId;
+		this.title = title;
+		this.content = content;
+	}
     
     public BoardRequestDto() {
     	

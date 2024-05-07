@@ -23,11 +23,10 @@
 		<%
 		BoardDao boardDao = BoardDao.getInstance();
 		List<BoardResponseDto> boardList = boardDao.findBoardAll();
-		%>
-		<% for (BoardResponseDto board : boardList) { %>
+		 for (BoardResponseDto board : boardList) { %>
         <tr>
             <td><%= board.getBoardCode() %></td>
-            <td><a href="http://localhost:8080/view?id=<%= board.getBoardCode() %>"><%= board.getTitle() %></a></td>
+            <td><a href="http://localhost:8080/view?boardCode=<%= board.getBoardCode() %>"><%= board.getTitle() %></a></td>
             <td><%= board.getTitle() %></td>
             <td><%= board.getUserId() %></td>
         </tr>

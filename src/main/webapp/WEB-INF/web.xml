@@ -132,7 +132,7 @@
 
 	<servlet>
 		<servlet-name>WriteBoardFormAction</servlet-name>
-		<servlet-class>rentalcarServer.board.controller.WriteFormAction</servlet-class>
+		<servlet-class>rentalcarServer.board.controller.WriteBoardFormAction</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>WriteBoardFormAction</servlet-name>
