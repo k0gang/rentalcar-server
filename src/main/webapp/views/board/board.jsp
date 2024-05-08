@@ -13,7 +13,6 @@
 <body>
 	<section id="board">
 		<h1>게시판</h1>
-
 		<table border="1">
 			<tr>번호</tr>
 			<tr>제목</tr>
@@ -31,9 +30,7 @@
             <td><%= board.getUserId() %></td>
         </tr>
     <% } %>
-	
 	<button onclick="location.href='/write'">게시물 작성</button>
-	
 	</section>
 </body>
 <jsp:include page="/footer"></jsp:include>

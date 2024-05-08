@@ -49,8 +49,7 @@ public class WriteBoardFormAction extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		UserResponseDto user = (UserResponseDto) session.getAttribute("user");
-		String userId = user.getUserId();
+		String userId = (String) session.getAttribute("userId");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
