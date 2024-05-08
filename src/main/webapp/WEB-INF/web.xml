@@ -104,6 +104,15 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>LogoutAction</servlet-name>
+		<servlet-class>rentalcarServer.user.controller.LogoutAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutAction</servlet-name>
+		<url-pattern>/Logout</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>UpdateFormAction</servlet-name>
 		<servlet-class>rentalcarServer.user.controller.UpdateFormAction</servlet-class>
 	</servlet>
