@@ -22,6 +22,7 @@
 	session = request.getSession();
 	session.setAttribute("boardCode", boardCode);
 	session.setAttribute("userId", userId);
+	System.out.println("userId : " + userId);
 	%>
 	
 	
