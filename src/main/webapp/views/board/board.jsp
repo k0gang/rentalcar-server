@@ -31,9 +31,6 @@
             <td><%= board.getUserId() %></td>
         </tr>
     <% } %>
-		
-		
-		
 	
 	<button onclick="location.href='/write'">게시물 작성</button>
 	

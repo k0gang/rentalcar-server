@@ -13,6 +13,11 @@
 	<h1>게시글 확인</h1>
 	<%
 	String boardCode = request.getParameter("boardCode");
+	String userId = request.getParameter("userid");
+	
+	System.out.println("userId : " + userId);
+	System.out.println("sessin userId : " + session.getAttribute("userId"));
+	
 	if (boardCode != null) {
 		BoardDao boardDao = BoardDao.getInstance();
 		BoardResponseDto board = boardDao.findBoard(Integer.parseInt(boardCode));
@@ -23,6 +28,10 @@
 	<div>
 		<p><%=boardTitle%></p>
 		<p><%=boardContent%></p>
+		<%
+		System.out.println("userId : " + userId);
+		System.out.println("sessin userId : " + session.getAttribute("userId"));
+		%>
 	</div>
 	<%
 	}
