@@ -45,11 +45,27 @@ public class UpdateBoardFormAction extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-		String boardCode = request.getParameter("board_code");
-		String userId = request.getParameter("user_id");
+		HttpSession session = request.getSession();
+		
+		String boardCode = request.getParameter("boardCode");
+//		String userId = request.getParameter("userId");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String admin = request.getParameter("admin");
+		
+		
+		
+//		String boardCode = (String) session.getAttribute("boardCode");
+		String userId = (String) session.getAttribute("userId");
+//		String title = (String) session.getAttribute("title");
+//		String content = (String) session.getAttribute("content");
+//		String admin = (String) session.getAttribute("admin");
+		
+		System.out.println("boardCode : " + boardCode);
+		System.out.println("userId : " + userId);
+		System.out.println("title : " + title);
+		System.out.println("content : " + content);
+		System.out.println("admin : " + admin);
 
 		boolean isValid = true;
 
@@ -70,9 +86,8 @@ public class UpdateBoardFormAction extends HttpServlet {
 			BoardRequestDto boardDto = new BoardRequestDto();
 			BoardResponseDto board = boardDao.updateBoard(boardDto);
 
-			HttpSession session = request.getSession();
-
 			if (board == null) {
+				System.out.println("되는건지 안되는건지");
 				response.sendRedirect("/board/" + board.getBoardCode());
 			} else {
 				System.out.println("게시물 수정 완료.");
@@ -81,6 +96,7 @@ public class UpdateBoardFormAction extends HttpServlet {
 			}
 
 		} else {
+			System.out.println("그냥 보드로 가는중");
 			response.sendRedirect("/board");
 		}
 

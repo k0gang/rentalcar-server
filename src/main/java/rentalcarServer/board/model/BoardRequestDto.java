@@ -28,6 +28,15 @@ public class BoardRequestDto {
 		this.regDate = regDate;
 	}
 	
+	public BoardRequestDto(int boardCode, String userId, String title, String content, boolean admin) {
+		super();
+		this.boardCode = boardCode;
+		this.userId = userId;
+		this.title = title;
+		this.content = content;
+		this.admin = admin;
+	}
+	
 	public BoardRequestDto(String userId, String title, String content) {
 		super();
 		this.userId = userId;

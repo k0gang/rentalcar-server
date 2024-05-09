@@ -126,6 +126,23 @@ public class BoardDao {
 		}
 		return false;
 	}
+	
+	public boolean deleteBoard(BoardResponseDto boardResponseDto) {
+		try {
+			String sql = "DELETE FROM board WHERE board_code=?";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, boardResponseDto.getBoardCode());
+
+			pstmt.execute();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
 
 	public BoardResponseDto updateBoard(BoardRequestDto boardDto) {
 		BoardResponseDto board = null;

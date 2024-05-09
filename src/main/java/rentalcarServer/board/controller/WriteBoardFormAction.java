@@ -36,7 +36,7 @@ public class WriteBoardFormAction extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId"); // 세션에서 현재 로그인한 사용자의 아이디 가져오기
-		System.out.println(userId);
+		System.out.println("userId : " + userId);
 	}
 
 	/**
@@ -84,7 +84,8 @@ BoardRequestDto boardDto = new BoardRequestDto();
 			} else {
 				//저장 성공
 				System.out.println("board : " + board);
-				response.sendRedirect("/board/view?boardCode=" + board.getBoardCode());
+				request.getRequestDispatcher("/board/view?boardCode=" + board.getBoardCode()).forward(request, response);
+//				response.sendRedirect("/board/view?boardCode=" + board.getBoardCode());
 			}
 		} else {
 			System.out.println("글이 없거나 제목이 없거나 ");

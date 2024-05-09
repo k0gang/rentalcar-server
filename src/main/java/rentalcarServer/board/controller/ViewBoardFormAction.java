@@ -46,9 +46,9 @@ public class ViewBoardFormAction extends HttpServlet {
             request.setAttribute("board", board);
             request.setAttribute("boardCode", board.getBoardCode());
             
-            System.out.println(id);
-            System.out.println(board);
-            System.out.println(board.getBoardCode());
+            System.out.println("userId" + id);
+            System.out.println("board" + board);
+            System.out.println("boardCode" + board.getBoardCode());
             
             request.getRequestDispatcher("/view").forward(request, response);
 		} else {

@@ -66,7 +66,7 @@
 		<servlet-name>board</servlet-name>
 		<url-pattern>/board/list</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>view</servlet-name>
 		<jsp-file>/views/board/view.jsp</jsp-file>
@@ -74,6 +74,15 @@
 	<servlet-mapping>
 		<servlet-name>view</servlet-name>
 		<url-pattern>/view</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>update</servlet-name>
+		<jsp-file>/views/board/update.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>update</servlet-name>
+		<url-pattern>/update</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -132,10 +141,10 @@
 
 	<servlet>
 		<servlet-name>DeleteBoardFormAction</servlet-name>
-		<servlet-class>rentalcarServer.board.controller.DeleteFormAction</servlet-class>
+		<servlet-class>rentalcarServer.board.controller.DeleteBoardFormAction</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>DeleteFormAction</servlet-name>
+		<servlet-name>DeleteBoardFormAction</servlet-name>
 		<url-pattern>/DeleteBoardForm</url-pattern>
 	</servlet-mapping>
 

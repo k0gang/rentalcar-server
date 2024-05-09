@@ -19,7 +19,7 @@
 		<p>${board}</p>
 		
 		<c:if test="${board.userId eq user.userId}">
-		<form method="POST" action="">
+		<form method="POST" action="/update">
 			<input type="hidden" name="boardCode" value="${board.boardCode}">
 			<button type="submit">수정하기</button>
 		</form>

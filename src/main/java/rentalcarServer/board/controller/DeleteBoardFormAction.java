@@ -40,26 +40,16 @@ public class DeleteBoardFormAction extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
 		
 		BoardDao boardDao = BoardDao.getInstance();
+		String boardCode = request.getParameter("boardCode");
 		
-		BoardResponseDto board = (BoardResponseDto) session.getAttribute("board");
+		BoardResponseDto board = boardDao.findBoard(Integer.parseInt(boardCode));
 		
-		Integer boardCode = board.getBoardCode();
-		
-		BoardRequestDto boardDto = new BoardRequestDto();
-		
-		boardDto.setBoardCode(boardCode);
-		
-		boolean result = boardDao.deleteBoard(boardDto);
-		
-		if(result) {
-			session.removeAttribute("board");
-			response.sendRedirect("/board");
-		}else {
-			response.sendRedirect("/deleteBoard");
-		}
-	}
+		System.out.println(board.getBoardCode());
 
+		boardDao.deleteBoard(board);
+		
+		response.sendRedirect("/board");
+	}
 }

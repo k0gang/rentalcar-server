@@ -66,12 +66,14 @@ public class LoginFormAction extends HttpServlet {
 			UserResponseDto user = userDao.findUserByIdAndPassword(id, password);
 			HttpSession session = request.getSession();
 			
+			session.setAttribute("user", user);
 			System.out.println("user : " + user);
 			
 			if (user != null) {
-				session.setAttribute("user", user);
+				session.setAttribute("userId", user.getUserId());
+
 				String test = (String) session.getAttribute("userId");
-				System.out.println("loginForm 에서의 userId : " + user.getUserId());
+				System.out.println("loginForm 에서의 userId : " + test);
 				 request.getRequestDispatcher("/mypage").forward(request, response);
 			} else {
 				System.out.println("로그인ㄴㄴ");
@@ -81,6 +83,7 @@ public class LoginFormAction extends HttpServlet {
 			// 로그인 처리 후, 페이지 이동
 
 		} else {
+			System.out.println("user = null");
 			response.sendRedirect("/login");
 		}
 	}
