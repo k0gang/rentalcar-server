@@ -19,17 +19,17 @@
 			<tr>작성자</tr>
 			<tr>작성일</tr>
 		</table>
-		<%
-		BoardDao boardDao = BoardDao.getInstance();
-		List<BoardResponseDto> boardList = boardDao.findBoardAll();
-		 for (BoardResponseDto board : boardList) { %>
-        <tr>
-            <td><%= board.getBoardCode() %></td>
-            <td><a href="http://localhost:8080/view?boardCode=<%= board.getBoardCode() %>"><%= board.getTitle() %></a></td>
-            <td><%= board.getTitle() %></td>
-            <td><%= board.getUserId() %></td>
-        </tr>
-    <% } %>
+		<tbody>
+			<c:forEach var="board" items="${boardList }">
+				<tr>
+					<td>${board.boardCode }</td>
+					<td><a href="/board/view?boardCode=${board.boardCode }">${board.title }</a></td>
+					<td>${board.userId }</td>
+					<td>${board.regDate }</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
 	<button onclick="location.href='/write'">게시물 작성</button>
 	</section>
 </body>

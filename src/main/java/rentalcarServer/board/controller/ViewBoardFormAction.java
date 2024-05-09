@@ -14,36 +14,54 @@ import rentalcarServer.board.model.BoardResponseDto;
 /**
  * Servlet implementation class ViewBoardFormAction
  */
-@WebServlet("/ViewBoardFormAction")
 public class ViewBoardFormAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ViewBoardFormAction() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int boardCode =  Integer.parseInt(request.getParameter("boardCode")) ;
-		BoardDao boardDao = BoardDao.getInstance();
-		BoardResponseDto board = boardDao.findBoard(boardCode);
-		System.out.println(board.getBoardCode());
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("board", board);
-		response.sendRedirect("/view");
+	public ViewBoardFormAction() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String boardCode = request.getParameter("boardCode");
+		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("userId");
+	
+        if (boardCode != null) {
+            BoardDao boardDao = BoardDao.getInstance();
+            int boardId = Integer.parseInt(boardCode);
+            
+            BoardResponseDto board = boardDao.findBoard(boardId);
+            
+            request.setAttribute("userId", id);
+            request.setAttribute("board", board);
+            request.setAttribute("boardCode", board.getBoardCode());
+            
+            System.out.println(id);
+            System.out.println(board);
+            System.out.println(board.getBoardCode());
+            
+            request.getRequestDispatcher("/view").forward(request, response);
+		} else {
+			response.sendRedirect("/board");
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

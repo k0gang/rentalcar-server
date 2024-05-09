@@ -47,18 +47,16 @@ public class DeleteBoardFormAction extends HttpServlet {
 		BoardResponseDto board = (BoardResponseDto) session.getAttribute("board");
 		
 		Integer boardCode = board.getBoardCode();
-		String userId = board.getUserId();
 		
 		BoardRequestDto boardDto = new BoardRequestDto();
 		
 		boardDto.setBoardCode(boardCode);
-		boardDto.setUserId(userId);
 		
 		boolean result = boardDao.deleteBoard(boardDto);
 		
 		if(result) {
 			session.removeAttribute("board");
-			response.sendRedirect("/");
+			response.sendRedirect("/board");
 		}else {
 			response.sendRedirect("/deleteBoard");
 		}

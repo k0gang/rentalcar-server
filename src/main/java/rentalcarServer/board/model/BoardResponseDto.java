@@ -8,23 +8,24 @@ public class BoardResponseDto {
     private int boardCode;
     private String title;
     private String content;
-    private Timestamp reg_date;
+    private Timestamp regDate;
     
     @Override
     public String toString() {
     	return this.userId + this.boardCode;
     }
     
-	public BoardResponseDto(int boardCode, String userId, String title, String content, boolean admin, Timestamp reg_date) {
+	public BoardResponseDto(int boardCode, String userId, String title, String content, boolean admin, Timestamp regDate) {
 		super();
 		this.boardCode = boardCode;
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
 		this.admin = admin;
-		this.reg_date = reg_date;
+		this.regDate = regDate;
 	}
 	
+
 	public BoardResponseDto(int boardCode, String userId, String title, String content, boolean admin) {
 		super();
 		this.boardCode = boardCode;
@@ -80,5 +81,13 @@ public class BoardResponseDto {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public Timestamp getRegDate() {
+		return regDate;
+	}
+	
+	public void setRegDate(Timestamp regDate) {
+		this.regDate = regDate;
 	}
 }

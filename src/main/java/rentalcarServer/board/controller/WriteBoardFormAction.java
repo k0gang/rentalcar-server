@@ -34,8 +34,9 @@ public class WriteBoardFormAction extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userId"); // 세션에서 현재 로그인한 사용자의 아이디 가져오기
+		System.out.println(userId);
 	}
 
 	/**
@@ -48,10 +49,14 @@ public class WriteBoardFormAction extends HttpServlet {
 		BoardDao boardDao = BoardDao.getInstance();
 
 		HttpSession session = request.getSession();
+		UserResponseDto user = (UserResponseDto) session.getAttribute("user");
 
-		String userId = (String) session.getAttribute("userId");
+		String userId = user.getUserId();
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		System.out.println("userId : " + userId);
+		System.out.println("title : " + title);
+		System.out.println("content : " + content);
 
 		boolean isValid = true;
 
@@ -63,14 +68,24 @@ public class WriteBoardFormAction extends HttpServlet {
 			isValid = false;
 
 		if (isValid) {
-			BoardRequestDto board = new BoardRequestDto();
-
-			board.setUserId(userId);
-			board.setTitle(title);
-			board.setContent(content);
-
-			BoardResponseDto boardResponseDto = boardDao.createBoard(board);
-			response.sendRedirect("/view?boardCode=" + boardResponseDto.getBoardCode());
+BoardRequestDto boardDto = new BoardRequestDto();
+			
+			boardDto.setUserId(userId);
+			boardDto.setTitle(title);
+			boardDto.setContent(content);
+			
+			BoardResponseDto board = boardDao.createBoard(boardDto);
+			session.setAttribute("board", board);
+			
+			if (board == null) {
+				System.out.println("문의등록 실패");
+				//저장 실패
+				response.sendRedirect("/board");
+			} else {
+				//저장 성공
+				System.out.println("board : " + board);
+				response.sendRedirect("/board/view?boardCode=" + board.getBoardCode());
+			}
 		} else {
 			System.out.println("글이 없거나 제목이 없거나 ");
 			response.sendRedirect("/boardAction");

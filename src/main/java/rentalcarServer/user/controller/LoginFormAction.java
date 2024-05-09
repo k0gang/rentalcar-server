@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import rentalcarServer.user.model.User;
 import rentalcarServer.user.model.UserDao;
 import rentalcarServer.user.model.UserRequestDto;
 import rentalcarServer.user.model.UserResponseDto;
@@ -34,10 +35,9 @@ public class LoginFormAction extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("dㅇㅇ?");
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId"); // 세션에서 현재 로그인한 사용자의 아이디 가져오기
-		System.out.println(userId);
+		System.out.println("dㅇㅇ?");
 	}
 
 	/**
@@ -46,9 +46,12 @@ public class LoginFormAction extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String id = request.getParameter("userId");
+		System.out.println("userId : " + id);
 		String password = request.getParameter("password");
-
+		System.out.println("password : " + password);
+		
 		boolean isValid = true;
 
 		if (id == null || id.equals(""))
@@ -62,12 +65,14 @@ public class LoginFormAction extends HttpServlet {
 			UserDao userDao = UserDao.getInstance();
 			UserResponseDto user = userDao.findUserByIdAndPassword(id, password);
 			HttpSession session = request.getSession();
-
+			
+			System.out.println("user : " + user);
+			
 			if (user != null) {
-				session.setAttribute("userId", user.getUserId());
+				session.setAttribute("user", user);
 				String test = (String) session.getAttribute("userId");
-				System.out.println(test);
-				response.sendRedirect("/mypage");
+				System.out.println("loginForm 에서의 userId : " + user.getUserId());
+				 request.getRequestDispatcher("/mypage").forward(request, response);
 			} else {
 				System.out.println("로그인ㄴㄴ");
 				response.sendRedirect("/login");

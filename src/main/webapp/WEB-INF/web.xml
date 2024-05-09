@@ -64,9 +64,9 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>board</servlet-name>
-		<url-pattern>/board</url-pattern>
+		<url-pattern>/board/list</url-pattern>
 	</servlet-mapping>
-
+	
 	<servlet>
 		<servlet-name>view</servlet-name>
 		<jsp-file>/views/board/view.jsp</jsp-file>
@@ -163,7 +163,16 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ViewBoardFormAction</servlet-name>
-		<url-pattern>/ViewBoardForm</url-pattern>
+		<url-pattern>/board/view</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BoardListAction</servlet-name>
+		<servlet-class>rentalcarServer.board.controller.BoardListAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BoardListAction</servlet-name>
+		<url-pattern>/board</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
