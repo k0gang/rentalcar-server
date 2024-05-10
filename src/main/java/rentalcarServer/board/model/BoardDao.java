@@ -166,6 +166,8 @@ public class BoardDao {
 			System.out.println("boardDao 에서의 boardCode : " + boardDto.getBoardCode());
 			
 			pstmt.execute();
+			
+			board = findBoard(boardDto.getBoardCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

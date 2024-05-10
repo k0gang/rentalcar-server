@@ -84,7 +84,9 @@ public class UpdateBoardFormAction extends HttpServlet {
 			BoardDao boardDao = BoardDao.getInstance();
 
 			BoardRequestDto boardDto = new BoardRequestDto(boardCode, userId, title, content, admin);
+			System.out.println(boardDto);
 			BoardResponseDto board = boardDao.updateBoard(boardDto);
+			System.out.println(board);
 
 			if (board == null) {
 				System.out.println("되는건지 안되는건지");
