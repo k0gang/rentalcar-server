@@ -185,6 +185,15 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>CarListAction</servlet-name>
+		<servlet-class>rentalcarServer.board.controller.CarListAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CarListAction</servlet-name>
+		<url-pattern>/carListAction</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>updateUserForm</servlet-name>
 		<jsp-file>/views/user/updateUserForm.jsp</jsp-file>
 	</servlet>
@@ -201,6 +210,16 @@
 		<servlet-name>deleteUserForm</servlet-name>
 		<url-pattern>/deleteUser</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>carList</servlet-name>
+		<jsp-file>/views/car/carList.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>carList</servlet-name>
+		<url-pattern>/carList</url-pattern>
+	</servlet-mapping>
+
 
 
 </web-app>

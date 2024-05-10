@@ -92,7 +92,7 @@ public class UpdateBoardFormAction extends HttpServlet {
 			} else {
 				System.out.println("게시물 수정 완료.");
 
-				response.sendRedirect("");
+				response.sendRedirect("/board");
 			}
 		} else {
 			System.out.println("그냥 보드로 가는중");
