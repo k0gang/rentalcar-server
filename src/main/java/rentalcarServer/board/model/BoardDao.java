@@ -154,13 +154,17 @@ public class BoardDao {
 		try {
 			conn = dbConnection.getConnection();
 
-			String sql = "UPDATE board SET title=? content=? WHERE board_code=?";
+			String sql = "UPDATE board SET title=?, content=? WHERE board_code=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardDto.getTitle());
 			pstmt.setString(2, boardDto.getContent());
 			pstmt.setInt(3, boardDto.getBoardCode());
 
+			System.out.println("boardDao 에서의 title : " + boardDto.getTitle());
+			System.out.println("boardDao 에서의 content : " + boardDto.getContent());
+			System.out.println("boardDao 에서의 boardCode : " + boardDto.getBoardCode());
+			
 			pstmt.execute();
 		} catch (Exception e) {
 			e.printStackTrace();

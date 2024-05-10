@@ -47,19 +47,19 @@ public class UpdateBoardFormAction extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		
-		String boardCode = request.getParameter("boardCode");
+//		String boardCode = request.getParameter("boardCode");
 //		String userId = request.getParameter("userId");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String admin = request.getParameter("admin");
+//		String admin = request.getParameter("admin");
 		
 		
 		
-//		String boardCode = (String) session.getAttribute("boardCode");
+		int boardCode = (int) session.getAttribute("boardCode");
 		String userId = (String) session.getAttribute("userId");
 //		String title = (String) session.getAttribute("title");
 //		String content = (String) session.getAttribute("content");
-//		String admin = (String) session.getAttribute("admin");
+		boolean admin = (boolean) session.getAttribute("admin");
 		
 		System.out.println("boardCode : " + boardCode);
 		System.out.println("userId : " + userId);
@@ -69,7 +69,7 @@ public class UpdateBoardFormAction extends HttpServlet {
 
 		boolean isValid = true;
 
-		if (boardCode == null || boardCode.equals(""))
+		if (boardCode == 0)
 			isValid = false;
 		else if (userId == null || userId.equals(""))
 			isValid = false;
@@ -77,29 +77,26 @@ public class UpdateBoardFormAction extends HttpServlet {
 			isValid = false;
 		else if (content == null || content.equals(""))
 			isValid = false;
-		else if (admin == null || admin.equals(""))
-			isValid = false;
+//		else if (admin == null)
+//			isValid = false;
 
 		if (isValid) {
 			BoardDao boardDao = BoardDao.getInstance();
 
-			BoardRequestDto boardDto = new BoardRequestDto();
+			BoardRequestDto boardDto = new BoardRequestDto(boardCode, userId, title, content, admin);
 			BoardResponseDto board = boardDao.updateBoard(boardDto);
 
 			if (board == null) {
 				System.out.println("되는건지 안되는건지");
-				response.sendRedirect("/board/" + board.getBoardCode());
+				response.sendRedirect("/board");
 			} else {
 				System.out.println("게시물 수정 완료.");
 
 				response.sendRedirect("");
 			}
-
 		} else {
 			System.out.println("그냥 보드로 가는중");
 			response.sendRedirect("/board");
 		}
-
 	}
-
 }

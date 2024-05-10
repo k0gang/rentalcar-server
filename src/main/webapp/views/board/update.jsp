@@ -15,6 +15,7 @@
 		<textarea id="content" name="content" rows="5" cols="50" required></textarea>
 		<br>
 		<br> <input type="submit" value="게시물작성">
+		
 	</form>
 	
 	<%--
@@ -25,7 +26,6 @@
 	session.setAttribute("userId", userId);
 	System.out.println("userId : " + userId);
 	--%>
-	
 	
 </body>
 <jsp:include page="/footer"></jsp:include>
