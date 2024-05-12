@@ -5,13 +5,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
+<jsp:include page="/header"></jsp:include>
 <body>
-<%
-	Connection connection = dbConnection.getConnection();
-%>
-<h1>hello</h1>
+
+
+
+<h1>렌찾사</h1>
+<h3>(렌트할 차량을 찾는 사람들의 모임 이라는 뜻)</h3>
 </body>
 </html>

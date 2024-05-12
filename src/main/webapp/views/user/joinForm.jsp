@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/resources/style/form.css">
 <meta charset="UTF-8">
 </head>
 <jsp:include page="/header"></jsp:include>

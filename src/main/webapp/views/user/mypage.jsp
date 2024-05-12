@@ -18,7 +18,8 @@
 		<button onclick="location.href='/updateUser'">회원정보 수정</button>
 		<button onclick="location.href='/deleteUser'">회원 탈퇴</button>
 		<button onclick="location.href='/board'">게시판</button>
-		<button onclick="location.href='/carList'">예약 ㄱㄱ</button>
+		<button onclick="location.href='/setDate'">렌트 ㄱㄱ</button>
+		<button onclick="location.href='/reservationForm'">내 예약 확인</button>
 		<button onclick="location.href='/Logout'">로그아웃</button>
 	</section>
 </body>

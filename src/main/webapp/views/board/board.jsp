@@ -18,7 +18,6 @@
 			<tr>제목</tr>
 			<tr>작성자</tr>
 			<tr>작성일</tr>
-		</table>
 		<tbody>
 			<c:forEach var="board" items="${boardList }">
 				<tr>

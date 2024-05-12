@@ -32,6 +32,15 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>setDateForm</servlet-name>
+		<jsp-file>/views/cars/setDateForm.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setDateForm</servlet-name>
+		<url-pattern>/setDate</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>header</servlet-name>
 		<jsp-file>/views/module/header.jsp</jsp-file>
 	</servlet>
@@ -92,6 +101,15 @@
 	<servlet-mapping>
 		<servlet-name>writeForm</servlet-name>
 		<url-pattern>/write</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>searchResultCars</servlet-name>
+		<jsp-file>/views/cars/searchResultCars.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>searchResultCars</servlet-name>
+		<url-pattern>/searchResultCars</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -185,12 +203,30 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>CarListAction</servlet-name>
-		<servlet-class>rentalcarServer.board.controller.CarListAction</servlet-class>
+		<servlet-name>SearchCarsAction</servlet-name>
+		<servlet-class>rentalcarServer.cars.controller.SearchCarsAction</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>CarListAction</servlet-name>
-		<url-pattern>/carListAction</url-pattern>
+		<servlet-name>SearchCarsAction</servlet-name>
+		<url-pattern>/SearchCars</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ReservationAction</servlet-name>
+		<servlet-class>rentalcarServer.reservations.controller.ReservationAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReservationAction</servlet-name>
+		<url-pattern>/Reservation</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MoveCarsDetail</servlet-name>
+		<servlet-class>rentalcarServer.cars.controller.MoveCarsDetail</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MoveCarsDetail</servlet-name>
+		<url-pattern>/CarsDetail</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -212,12 +248,21 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>carList</servlet-name>
-		<jsp-file>/views/car/carList.jsp</jsp-file>
+		<servlet-name>carsDetail</servlet-name>
+		<jsp-file>/views/cars/carsDetail.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>carList</servlet-name>
-		<url-pattern>/carList</url-pattern>
+		<servlet-name>carsDetail</servlet-name>
+		<url-pattern>/carsDetailForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>reservationResult</servlet-name>
+		<jsp-file>/views/reservation/reservationResult.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>reservationResult</servlet-name>
+		<url-pattern>/reservationResult</url-pattern>
 	</servlet-mapping>
 
 
